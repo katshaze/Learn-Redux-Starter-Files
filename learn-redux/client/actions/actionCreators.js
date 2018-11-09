@@ -24,3 +24,7 @@ export function removeComment(postId, index) {
         index
     }
 }
+
+// the action creators tell us what has happened with the data we need, like regular js events that get fired off.  
+// e.g. x commented y on z photo. 
+// but it doesn't actually update the state (which is our store in redux) -  we need reducers for that

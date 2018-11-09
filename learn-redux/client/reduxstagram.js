@@ -12,6 +12,8 @@ import PhotoGrid from './components/PhotoGrid';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Provider }  from 'react-redux'; // allows us to use redux with react coz redux can actually be used with anything
+import store, { history } from './store'; // store is a default export so no destructuring required, but history is named so needs destructuring
 
 const router = (
     <Router history={browserHistory}>
