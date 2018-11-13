@@ -6,7 +6,18 @@
 
 // first time this runs, there won't be any state, so need to start the state as an empty array
 function posts(state=[], action) {
-    console.log(state, action);
+    switch(action.type) {
+        case 'INCREMENT_LIKES' :
+            console.log('incrementing likes!');
+            const i = action.index;
+            return [
+                ...state.slice(0,i), // before the one we are updating
+                {...state[i], likes: state[i].likes + 1}, // update the one post we're actually interested in
+                ...state.slice(i + 1), // after the one we are updating
+            ]
+        default: 
+            return state;
+    }
     return state;    
 }
 

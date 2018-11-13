@@ -6,22 +6,24 @@ import { render } from 'react-dom';
 import css from './styles/style.styl';
 
 //import components
-import Main from './components/Main';
+import App from './components/App';
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 
-// import react router deps
+// import react router dependencies
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider }  from 'react-redux'; // allows us to use redux with react coz redux can actually be used with anything
 import store, { history } from './store'; // store is a default export so no destructuring required, but history is named so needs destructuring
 
 const router = (
-    <Router history={browserHistory}>
-        <Route path="/" component={Main}>
-            <IndexRoute component={PhotoGrid}></IndexRoute>
-            <Route path="/view/:postId" component={Single}></Route>
-        </Route>
-    </Router>
+    <Provider store={store}>
+        <Router history={history}>
+            <Route path="/" component={App}>
+                <IndexRoute component={PhotoGrid}></IndexRoute>
+                <Route path="/view/:postId" component={Single}></Route>
+            </Route>
+        </Router>
+    </Provider>
 )
 
 render(router, document.getElementById('root'));
